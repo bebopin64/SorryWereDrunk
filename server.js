@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var env = require('dotenv').load();
 var exphbs = require('express-handlebars');
 
+
 //BodyParser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -64,6 +65,8 @@ models.sequelize.sync().then(function() {
 // db.once('open', function () {
 //    console.log('Mongoose connection successful.');
 // });
+var path = require('path');
+app.use(express.static(path.join(__dirname, '/app/views/stylesheets')));
 
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
